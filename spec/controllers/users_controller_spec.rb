@@ -36,7 +36,7 @@ describe UsersController do
   end
 
   describe 'GET #show' do
-    it 'assigns the requested contact to @user' do
+    it 'assigns the requested user to @user' do
       user = create(:user)
       get :show, id: user
       expect(assigns(:user)).to eq user
