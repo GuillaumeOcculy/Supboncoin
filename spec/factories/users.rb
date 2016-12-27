@@ -11,5 +11,9 @@ FactoryGirl.define do
     factory :admin do
       is_admin        true
     end
+
+    factory :invalid_user do
+      first_name      { nil }
+    end
   end
 end
