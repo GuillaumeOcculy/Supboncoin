@@ -1,6 +1,7 @@
 require 'rails_helper'
+require 'categories_controller'
 
-describe CategoriesController do
+describe CategoriesController, type: :controller do
   describe 'GET #index' do
     it 'populates an array of categories' do
       computer = create(:category, name: 'Computer')
