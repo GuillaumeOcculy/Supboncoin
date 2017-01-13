@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
-  root 'users#new'
+  root 'posts#index'
 
   # Sessions
   get       'sign_in',  to: 'sessions#new'

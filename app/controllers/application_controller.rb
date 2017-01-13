@@ -11,4 +11,14 @@ class ApplicationController < ActionController::Base
     @user ||= User.find(session[:user_id]) if session[:user_id]
   end
   helper_method :current_user
+
+  def require_authenticate
+    redirect_to sign_in_path if !session[:user_id]
+    flash[:danger] = "You need signed in"
+  end
+
+  def no_require_authenticate
+    redirect_to root_path if session[:user_id]
+    flash[:danger] = "You are already signed in"
+  end
 end

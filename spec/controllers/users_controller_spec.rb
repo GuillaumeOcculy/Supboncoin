@@ -61,14 +61,18 @@ describe UsersController do
   end
 
   describe 'GET #edit' do
+    before :each do
+      @user = create(:user)
+      set_user_session(@user)
+    end
     it 'assigns the requested user to @user' do
-      user = create(:user)
-      get :edit, id: user
-      expect(assigns(:user)).to eq user
+
+      get :edit, id: @user
+      expect(assigns(:user)).to eq @user
     end
     it 'renders the :edit template' do
-      user = create(:user)
-      get :edit, id: user
+
+      get :edit, id: @user
       expect(response).to render_template :edit
     end
   end
@@ -98,6 +102,7 @@ describe UsersController do
   describe 'PATCH #update' do
     before :each do
       @user = create(:user, first_name: 'Xavi', last_name: 'Hernandez')
+      set_user_session(@user)
     end
 
     context 'with valid attributes' do
@@ -137,6 +142,7 @@ describe UsersController do
   describe 'DELETE #destroy' do
     before :each do
       @user = create(:user)
+      set_user_session(@user)
     end
     it 'deletes the contact form database' do
       expect{ delete :destroy, id: @user }.to change(User, :count).by(-1)
