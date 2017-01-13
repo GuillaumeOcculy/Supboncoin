@@ -11,8 +11,13 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :username
   validates_uniqueness_of :phone
 
-  # Methods
+  # Class Methods
   def self.by_letter(letter)
     where('last_name LIKE ?', "#{letter}%").order(:last_name)
+  end
+
+  # Methods
+  def name
+    "#{first_name} #{last_name}"
   end
 end
