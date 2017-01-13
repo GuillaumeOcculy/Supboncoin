@@ -34,7 +34,5 @@ ActiveRecord::Schema.define(version: 20161227192311) do
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["phone"], name: "index_users_on_phone", unique: true
-  add_index "users", ["username"], name: "index_users_on_username", unique: true
 
 end

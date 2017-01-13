@@ -2,10 +2,19 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
+  root 'users#new'
+
+  # Sessions
+  get       'sign_in',  to: 'sessions#new'
+  post      'sign_in',  to: 'sessions#create'
+  delete    'sign_out', to: 'sessions#destroy'
+
+  get       'sign_up',  to: 'users#new'
   resources :users
   resources :categories, only: [:index, :show]
 
   namespace :admin do
+    resources :users
     resources :categories
   end
   # You can have the root of your site routed with "root"
