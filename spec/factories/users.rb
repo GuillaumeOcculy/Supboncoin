@@ -4,7 +4,7 @@ FactoryGirl.define do
     last_name         { Faker::Name.last_name }
     email             { Faker::Internet.email }
     username          {"#{first_name}-#{last_name}"}
-    password_digest   "password"
+    password          "password"
     is_admin          false
     phone             { Faker::PhoneNumber.phone_number }
 

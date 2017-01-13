@@ -1,0 +1,11 @@
+<h1>Users#New</h1>
+<%= form_for @user do |f| %>
+  <%= f.text_field :first_name, placeholder: 'firstname' %>
+  <%= f.text_field :last_name,  placeholder: 'lastname' %>
+  <%= f.email_field :email, placeholder: 'email' %>
+  <%= f.password_field :password, placeholder: 'password' %>
+
+  <%= f.submit %>
+
+
+<% end %>

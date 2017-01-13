@@ -8,6 +8,17 @@
 </head>
 <body>
 
+<% if current_user %>
+  <%= link_to 'Log out', sign_out_path, method: :delete %>
+<% else %>
+  <%= link_to 'Sign in', sign_in_path %>
+  <%= link_to 'Sign up', sign_up_path %>
+<% end %>
+
+<% flash.each do |key, value| %>
+  <h3><%= content_tag(:div, value, class: "text-center alert alert-#{key}") %></h3>
+<% end %>
+
 <%= yield %>
 
 </body>
