@@ -13,12 +13,16 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def require_authenticate
-    redirect_to sign_in_path if !session[:user_id]
-    flash[:danger] = "You need signed in"
+    if !session[:user_id]
+      redirect_to sign_in_path
+      flash[:danger] = "You need signed in"
+    end
   end
 
   def no_require_authenticate
-    redirect_to root_path if session[:user_id]
-    flash[:danger] = "You are already signed in"
+    if session[:user_id]
+      redirect_to root_path
+      flash[:danger] = "You are already signed in"
+    end
   end
 end

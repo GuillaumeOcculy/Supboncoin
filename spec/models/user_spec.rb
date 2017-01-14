@@ -30,7 +30,7 @@ RSpec.describe User, type: :model do
       it { should have_db_column(:is_admin).of_type(:boolean)}
     end
   end
-  
+
   describe 'has a secure password' do
     it { should have_secure_password }
   end
