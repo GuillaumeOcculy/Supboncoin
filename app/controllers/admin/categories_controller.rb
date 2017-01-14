@@ -7,7 +7,7 @@ class Admin::CategoriesController < Admin::AdminController
 
   def show
   end
-  
+
   def new
     @category = Category.new
   end
