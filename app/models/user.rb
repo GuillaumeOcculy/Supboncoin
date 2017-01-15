@@ -1,9 +1,12 @@
 class User < ActiveRecord::Base
   has_secure_password
 
+  # Callbacks
+  before_save { self.email = normalize_email(email)  }
+  before_save { self.username = normalize_username(username)  }
+
   # Validations
-  validates_presence_of :first_name
-  validates_presence_of :last_name
+  validates_presence_of :username
   validates_presence_of :email
   validates_presence_of :password, on: :create
 
@@ -11,9 +14,20 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :username
   validates_uniqueness_of :phone
 
+  validates_format_of :email, with: /\A\d+@(supinfo).com\z/
+
   # Class Methods
   def self.by_letter(letter)
     where('last_name LIKE ?', "#{letter}%").order(:last_name)
+  end
+
+  # Instance Methods
+  def normalize_email(email)
+    email.to_s.downcase.gsub(/\s+/, "")
+  end
+
+  def normalize_username(username)
+    username.to_s.downcase.gsub(/\s+/, "")
   end
 
   # Methods

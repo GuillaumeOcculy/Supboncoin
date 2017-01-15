@@ -2,32 +2,53 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
 
-  context "Validations" do
-    it { should validate_presence_of(:first_name) }
-    it { should validate_presence_of(:last_name) }
-    it { should validate_presence_of(:email) }
-    it { should validate_presence_of(:password) }
+  it { is_expected.to allow_value('19191919@supinfo.com').for(:email) }
+  it { is_expected.to_not allow_value('aaa19191919@supinfo.com').for(:email) }
+  it { is_expected.to_not allow_value('foo@supinfo.com').for(:email) }
+  it { is_expected.to_not allow_value('foo+bar@supinfo.com').for(:email) }
+  it { is_expected.to_not allow_value('foo@example.com').for(:email) }
+  it { is_expected.to_not allow_value('foosupinfo.com').for(:email) }
 
-    it { should validate_uniqueness_of(:email) }
-    it { should validate_uniqueness_of(:username) }
-    it { should validate_uniqueness_of(:phone) }
+  # describe '#email' do
+  #   it 'stores email in downcase and removes whitespace' do
+  #     user = create(:user, email: '191919@supinfo.com')
+  #     expect(user.email).to eq '191919@supinfo.com'
+  #   end
+  # end
+
+  describe '#username' do
+    it 'stores username in downcase and removes whitespace' do
+      user = create(:user, username: 'jo h n Do e')
+      expect(user.username).to eq 'johndoe'
+    end
+  end
+
+  context "Validations" do
+
+    it { is_expected.to validate_presence_of(:username) }
+    it { is_expected.to validate_presence_of(:email) }
+    it { is_expected.to validate_presence_of(:password) }
+
+    it { is_expected.to validate_uniqueness_of(:email) }
+    it { is_expected.to validate_uniqueness_of(:username) }
+    it { is_expected.to validate_uniqueness_of(:phone) }
 
   end
 
   context 'db' do
     context 'indexes' do
-      it { should have_db_index(:email) }
-      it { should have_db_index(:username) }
+      it { is_expected.to have_db_index(:email) }
+      it { is_expected.to have_db_index(:username) }
     end
 
     context 'columns' do
-      it { should have_db_column(:first_name).of_type(:string)}
-      it { should have_db_column(:last_name).of_type(:string)}
-      it { should have_db_column(:email).of_type(:string)}
-      it { should have_db_column(:username).of_type(:string)}
-      it { should have_db_column(:password_digest).of_type(:string)}
-      it { should have_db_column(:phone).of_type(:string)}
-      it { should have_db_column(:is_admin).of_type(:boolean)}
+      it { is_expected.to have_db_column(:first_name).of_type(:string)}
+      it { is_expected.to have_db_column(:last_name).of_type(:string)}
+      it { is_expected.to have_db_column(:email).of_type(:string)}
+      it { is_expected.to have_db_column(:username).of_type(:string)}
+      it { is_expected.to have_db_column(:password_digest).of_type(:string)}
+      it { is_expected.to have_db_column(:phone).of_type(:string)}
+      it { is_expected.to have_db_column(:is_admin).of_type(:boolean)}
     end
   end
 
