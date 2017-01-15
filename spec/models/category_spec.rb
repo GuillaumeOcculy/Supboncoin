@@ -27,4 +27,5 @@ RSpec.describe Category, type: :model do
       expect(user.name).to eq 'Computing'
     end
   end
+  
 end
