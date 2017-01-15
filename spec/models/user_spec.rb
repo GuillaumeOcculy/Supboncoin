@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
 
-  it { is_expected.to allow_value('19191919@supinfo.com').for(:email) }
+  it { is_expected.to     allow_value('19191919@supinfo.com').for(:email) }
   it { is_expected.to_not allow_value('aaa19191919@supinfo.com').for(:email) }
   it { is_expected.to_not allow_value('foo@supinfo.com').for(:email) }
   it { is_expected.to_not allow_value('foo+bar@supinfo.com').for(:email) }
