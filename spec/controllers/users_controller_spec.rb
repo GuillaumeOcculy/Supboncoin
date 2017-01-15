@@ -139,19 +139,19 @@ describe UsersController do
     end
   end
 
-  describe 'DELETE #destroy' do
-    before :each do
-      @user = create(:user)
-      set_user_session(@user)
-    end
-    it 'deletes the contact form database' do
-      expect{ delete :destroy, id: @user }.to change(User, :count).by(-1)
-    end
-    it 'redirects to users#index' do
-      delete :destroy, id: @user
-      expect(response).to redirect_to users_path
-    end
-  end
+  # describe 'DELETE #destroy' do
+  #   before :each do
+  #     @user = create(:user)
+  #     set_user_session(@user)
+  #   end
+  #   it 'deletes the contact form database' do
+  #     expect{ delete :destroy, id: @user }.to change(User, :count).by(-1)
+  #   end
+  #   it 'redirects to users#index' do
+  #     delete :destroy, id: @user
+  #     expect(response).to redirect_to users_path
+  #   end
+  # end
 
 
 end

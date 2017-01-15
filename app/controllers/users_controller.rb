@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :find_user, only: [:show, :edit, :update, :destroy]
-  before_action :require_authenticate, only: [:edit, :update, :destroy]
+  before_action :find_user, only: [:show, :edit, :update]
+  before_action :require_authenticate, only: [:edit, :update]
   before_action :no_require_authenticate, only: [:new, :create]
 
   def index
@@ -41,10 +41,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def destroy
-    @user.destroy
-    redirect_to users_path
-  end
 
   private
   def find_user
