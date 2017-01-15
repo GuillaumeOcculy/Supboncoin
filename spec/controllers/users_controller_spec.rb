@@ -126,14 +126,14 @@ describe UsersController do
 
     context 'with invalid attributes' do
       it 'does not update the user' do
-        patch :update, id: @user, user: attributes_for(:user, first_name: 'Lionel', last_name: nil)
+        patch :update, id: @user, user: attributes_for(:user, first_name: 'Lionel', username: nil)
         @user.reload
         expect(@user.first_name).to_not eq('Lionel')
         expect(@user.last_name).to      eq('Hernandez')
       end
 
       it 're-renders the #edit template' do
-        patch :update, id: @user, user: attributes_for(:user, first_name: 'Lionel', last_name: nil)
+        patch :update, id: @user, user: attributes_for(:user, first_name: 'Lionel', username: nil)
         expect(response).to render_template :edit
       end
     end

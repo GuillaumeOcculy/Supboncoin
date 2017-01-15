@@ -13,7 +13,7 @@ FactoryGirl.define do
     end
 
     factory :invalid_user do
-      first_name      { nil }
+      username      { nil }
     end
   end
 end

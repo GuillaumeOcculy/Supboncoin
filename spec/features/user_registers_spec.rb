@@ -6,9 +6,8 @@ feature 'User registers' do
 
     click_link "Sign up"
 
-    fill_in :user_first_name, with: 'guillaume'
-    fill_in :user_last_name, with: 'west'
-    fill_in :user_email, with: 'guillaume@west.com'
+    fill_in :user_username, with: 'guillaume'
+    fill_in :user_email, with: '191919@supinfo.com'
     fill_in :user_password, with: 'password'
     click_button 'Sign up'
 
@@ -20,9 +19,8 @@ feature 'User registers' do
 
     click_link "Sign up"
 
-    fill_in :user_first_name, with: 'guillaume'
-    fill_in :user_last_name, with: 'west'
-    fill_in :user_email, with: ''
+    fill_in :user_username, with: 'guillaume'
+    fill_in :user_email, with: 'guillaume@supinfo.com'
     fill_in :user_password, with: 'password'
     click_button 'Sign up'
 
