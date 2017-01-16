@@ -1,0 +1,19 @@
+<h1>Posts#index</h1>
+
+<%= link_to 'Add a post', new_post_path %>
+<% if @posts.any? %>
+  <% @posts.each do |post| %>
+    <div>
+      <h2><%= post.name %></h2>
+      <p> <%= post.description %> </p>
+      <p> <%= post.price %> </p>
+      <p> <%= time_ago_in_words(post.created_at) %> ago </p>
+      <p> published by <%= link_to post.user.username, post.user %> </p>   
+      <%= link_to 'show', post  %>
+      <%= link_to 'edit', edit_post_path(post) if post.user == current_user %>
+      <%= link_to 'delete', post, method: :delete if post.user == current_user %>
+    </div>
+  <% end %>
+  <% else %>
+    <p>No posts yet</p>
+<% end %>

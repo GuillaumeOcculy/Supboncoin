@@ -33,6 +33,8 @@ RSpec.describe User, type: :model do
     it { is_expected.to validate_uniqueness_of(:username) }
     it { is_expected.to validate_uniqueness_of(:phone) }
 
+    it { is_expected.to have_many(:posts) }
+
   end
 
   context 'db' do

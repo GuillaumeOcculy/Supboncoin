@@ -36,7 +36,7 @@ describe PostsController, type: :controller do
   context 'when user is signed in' do
     before :each do
       set_user_session(user)
-      @post = create(:post, name: 'Iphone', category_id: category.id, user_id: user.id)
+      @post = create(:post, name: 'Iphone')
     end
 
 

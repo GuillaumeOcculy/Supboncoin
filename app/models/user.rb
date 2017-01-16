@@ -5,6 +5,9 @@ class User < ActiveRecord::Base
   before_save { self.email = normalize_email(email)  }
   before_save { self.username = normalize_username(username)  }
 
+  # Associations
+  has_many :posts
+
   # Validations
   validates_presence_of :username
   validates_presence_of :email
