@@ -1,8 +1,16 @@
 FactoryGirl.define do
   factory :post do
-    name "MyString"
-    content "MyText"
-    price 1.5
-    category nil
+    name         { Faker::Commerce.product_name }
+    description  { Faker::Lorem.paragraph }
+    price        { Faker::Commerce.price }
+
+    # Associations
+    category
+    user
+
+
+    factory :invalid_post do
+      name    nil
+    end
   end
 end

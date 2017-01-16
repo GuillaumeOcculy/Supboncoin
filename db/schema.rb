@@ -23,15 +23,17 @@ ActiveRecord::Schema.define(version: 20170115220013) do
 
   create_table "posts", force: true do |t|
     t.string   "name"
-    t.text     "content"
+    t.text     "description"
     t.float    "price"
     t.integer  "category_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "posts", ["category_id"], name: "index_posts_on_category_id"
   add_index "posts", ["name"], name: "index_posts_on_name"
+  add_index "posts", ["user_id"], name: "index_posts_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "first_name"

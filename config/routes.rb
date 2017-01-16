@@ -10,9 +10,10 @@ Rails.application.routes.draw do
   delete    'sign_out', to: 'sessions#destroy'
 
   get       'sign_up',  to: 'users#new'
-  
+
   resources :users, except: [:destroy]
   resources :categories, only: [:index, :show]
+  resources :posts
 
   namespace :admin do
     resources :users

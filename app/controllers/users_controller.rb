@@ -35,8 +35,10 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
+      flash[:success] = "Your account is updated !"
       redirect_to @user
     else
+      flash.now[:danger] = "Your account is not updated !"
       render :edit
     end
   end
