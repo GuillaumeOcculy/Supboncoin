@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
 
   validates_uniqueness_of :email
   validates_uniqueness_of :username
-  validates_uniqueness_of :phone
+  validates_uniqueness_of :phone, allow_nil: true
 
   validates_format_of :email, with: /\A\d+@(supinfo).com\z/
 
