@@ -5,18 +5,35 @@ describe PostsController, type: :controller do
   let(:category) { create(:category) }
 
   describe 'GET #index' do
-    it 'renders the :index template' do
-      get :index
-      expect(response).to render_template :index
+    context 'with params[:name]' do
+      it 'populates an array of posts containing letters' do
+        game    = create(:post, name: 'Game')
+        iphone  = create(:post, name: 'iPhone')
+
+        get :index, name: 'game'
+        expect(assigns(:posts)).to match_array([game])
+      end
+      it 'renders the :index template' do
+        get :index, name: 'game'
+        expect(response).to render_template :index
+      end
     end
 
-    it 'populates an array of posts' do
-      game = create(:post, name: 'Game')
-      video = create(:post, name: 'Video')
+    context 'without params[:name]' do
+      it 'populates an array of posts' do
+        game = create(:post, name: 'Game')
+        video = create(:post, name: 'Video')
 
-      get :index
-      expect(assigns(:posts)).to match_array([game, video])
+        get :index
+        expect(assigns(:posts)).to match_array([game, video])
+      end
+
+      it 'renders the :index template' do
+        get :index
+        expect(response).to render_template :index
+      end
     end
+
   end
 
   describe 'GET #show' do

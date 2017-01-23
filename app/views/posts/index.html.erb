@@ -1,5 +1,11 @@
 <h1>Posts#index</h1>
 
+<%= form_tag posts_path, method: :get do %>
+  <%= label_tag(:name, "search for:") %>
+  <%= text_field_tag :name %>
+  <%= submit_tag 'Search post' %>
+<% end %>
+
 <%= link_to 'Add a post', new_post_path %>
 <% if @posts.any? %>
   <% @posts.each do |post| %>
@@ -8,7 +14,8 @@
       <p> <%= post.description %> </p>
       <p> <%= post.price %> </p>
       <p> <%= time_ago_in_words(post.created_at) %> ago </p>
-      <p> published by <%= link_to post.user.username, post.user %> </p>   
+      <p> <%= link_to post.category.name, post.category %> </p>
+      <p> published by <%= link_to post.user.username, post.user %> </p>
       <%= link_to 'show', post  %>
       <%= link_to 'edit', edit_post_path(post) if post.user == current_user %>
       <%= link_to 'delete', post, method: :delete if post.user == current_user %>

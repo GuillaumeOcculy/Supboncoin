@@ -16,6 +16,12 @@ class Post < ActiveRecord::Base
   validates_presence_of :user
 
 
+  # Class Methods
+  def self.by_name(name)
+    where('name LIKE ?', "%#{name}%").order(:created_at)
+  end
+
+  # Instance Methods
   def normalize_name(name)
     name.to_s.capitalize.strip
   end
