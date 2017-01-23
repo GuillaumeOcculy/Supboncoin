@@ -7,14 +7,9 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<%= link_to 'Home', root_path %>
-<% if current_user %>
-<p>Hello <%= current_user.username %></p>
-  <%= link_to 'Log out', sign_out_path, method: :delete %>
-<% else %>
-  <%= link_to 'Sign in', sign_in_path %>
-  <%= link_to 'Sign up', sign_up_path %>
-<% end %>
+
+  <%= render 'layouts/header' %>
+
 
 <% flash.each do |key, value| %>
   <h3><%= content_tag(:div, value, class: "text-center alert alert-#{key}") %></h3>

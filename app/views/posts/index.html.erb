@@ -1,4 +1,4 @@
-<h1>Posts#index</h1>
+<h1 class='center'>Posts#index</h1>
 
 <%= form_tag posts_path, method: :get do %>
   <%= label_tag(:name, "search for:") %>
@@ -6,20 +6,19 @@
   <%= submit_tag 'Search post' %>
 <% end %>
 
-<%= link_to 'Add a post', new_post_path %>
+
+<%= link_to 'Add a post', new_post_path, class: 'btn btn-success' %>
+
+
 <% if @posts.any? %>
   <% @posts.each do |post| %>
-    <div>
-      <h2><%= post.name %></h2>
-      <p> <%= post.description %> </p>
-      <p> <%= post.price %> </p>
-      <p> <%= time_ago_in_words(post.created_at) %> ago </p>
-      <p> <%= link_to post.category.name, post.category %> </p>
-      <p> published by <%= link_to post.user.username, post.user %> </p>
-      <%= link_to 'show', post  %>
-      <%= link_to 'edit', edit_post_path(post) if post.user == current_user %>
-      <%= link_to 'delete', post, method: :delete if post.user == current_user %>
+  <div class="panel panel-success">
+    <div class="panel-heading"><h2><%= post.name %></h2></div>
+    <div class="panel-body"><p><%= post.description %></p></div>
+    <div class="panel-footer">
+      <%= post.price %>&euro; <%= time_ago_in_words(post.created_at) %> ago <%= link_to post.category.name, post.category %> published by <%= link_to post.user.username, post.user %><%= link_to 'show', post  %><%= link_to 'edit', edit_post_path(post) if post.user == current_user %><%= link_to 'delete', post, method: :delete if post.user == current_user %>
     </div>
+  </div>
   <% end %>
   <% else %>
     <p>No posts yet</p>
