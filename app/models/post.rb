@@ -21,7 +21,7 @@ class Post < ActiveRecord::Base
 
   # Class Methods
   def self.by_name(name)
-    where('name LIKE ?', "%#{name}%").order(:created_at)
+    where('name LIKE ?', "%#{name}%").order(created_at: :desc)
   end
 
   # Instance Methods

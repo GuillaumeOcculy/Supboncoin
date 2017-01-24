@@ -7,7 +7,7 @@ class PostsController < ApplicationController
     if params[:name]
       @posts = Post.by_name(params[:name])
     else
-      @posts = Post.all
+      @posts = Post.all.recent
     end
   end
 
