@@ -6,6 +6,7 @@ class Post < ActiveRecord::Base
   # Associations
   belongs_to :category
   belongs_to :user
+  has_many :comments
 
   # Validations
   validates_presence_of :name
@@ -15,6 +16,8 @@ class Post < ActiveRecord::Base
   validates_presence_of :category
   validates_presence_of :user
 
+  # Scopes
+  scope :recent, -> { order(created_at: :desc)}
 
   # Class Methods
   def self.by_name(name)

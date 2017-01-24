@@ -12,6 +12,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    @comments = @post.comments.includes(:post, :user).recent
   end
 
   def new
